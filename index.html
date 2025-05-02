@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+  <head>
+    <title>HERRY Consult Referenzen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scripts/leaflet.css">
+    <script src="scripts/leaflet.js"></script>
+  </head>
+  
+  <body style="height: 100%;margin: 0;">
+    <div id="map" style="width: 100%; height: 100%; background: #000000;"></div>
+    <script type="text/javascript">
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Creating the Map
+    var map = L.map('map').setView([47.780, 13.354], 8);
+
+// Tile-Layer erstellen
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 15,
+    minZoom: 5,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OSM</a>'
+    }).addTo(map);  
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Coordinate Finder --> wenn benötigt, einfach die // vor den einzelnen Zeilen entfernen!
+//    var marker = L.marker([0, 0], {
+//     draggable: true,
+//    }).addTo(map);
+//    marker.bindPopup('LatLng Marker').openPopup();
+//    marker.on('dragend', function(e) {
+//      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+//    });
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Optionen fuer Tooltips (also das, was angezeigt wird, wenn man mit der Maus drueber faehrt)
+    var tooltipOptions = {
+        permanent: false, // Der Tooltip wird nicht staendig angezeigt, sondern nur bei Mouseover
+        direction: 'right', // Die Richtung, in der der Tooltip angezeigt wird
+        className: 'custom-tooltip' // Benutzerdefinierte CSS-Klasse fuer Styling
+      };
+
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Custom Marker (png-Dateien müssen im Githubordner "icons" abgelegt sein), die Größe muss entsprechend angepasst werden
+
+//    var NameVonCustomIcon = L.icon({
+//		iconUrl:       'icons/BILDDATEINAME.png',
+//		iconRetinaUrl: 'icons/BILDDATEINAME.png',
+//		iconSize:    [15, 15],
+//		iconAnchor:  [8, 8],
+//		popupAnchor: [0, -5],
+//		tooltipAnchor: [5, 0],
+//	});
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Marker: den Code erstelle ich direkt in meinem Google Sheet --> zum aendern einfach die gesamte Code-Spalte kopieren und statt folgendem Inhalt einfuegen:
+
+var FH Salzburg = L.marker([47.72310, 13.09154]).bindPopup("<b>Mobilitätsbefragung an der FH Salzburg</b> </br> Im Jahr 2025 haben wir an der FH Salzburg eine Mobilitätsbefragung durchgeführt ").bindTooltip('Mobilitätsbefragung an der FH Salzburg', tooltipOptions).addTo(map);
+// var Beispiel = L.marker([X-Koordinate, Y-Koordinate], {icon: Name von Custom Icon}).bindTooltip('angezeigter Text, wenn man drauf klickt', tooltipOptions).addTo(map);
+
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    </script>
+  </body>
+</html>
