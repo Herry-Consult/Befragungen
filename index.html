@@ -57,7 +57,9 @@
 // Marker: den Code erstelle ich direkt in meinem Google Sheet --> zum aendern einfach die gesamte Code-Spalte kopieren und statt folgendem Inhalt einfuegen:
 
 var FH_Salzburg = L.marker([47.72310, 13.09154]).bindPopup("<b>Mobilitätsbefragung an der FH Salzburg</b> </br> Im Jahr 2025 haben wir an der FH Salzburg eine Mobilitätsbefragung durchgeführt ").bindTooltip('Mobilitätsbefragung an der FH Salzburg', tooltipOptions).addTo(map);
-// var Beispiel = L.marker([X-Koordinate, Y-Koordinate], {icon: Name von Custom Icon}).bindTooltip('angezeigter Text, wenn man drauf klickt', tooltipOptions).addTo(map);
+var FH_Salzburg1 = L.marker([47.8, 13.1], {icon: Hochschule}).bindPopup("<b>Mobilitätsbefragung an der FH Salzburg</b><br>Im Jahr 2025 haben wir an der FH Salzburg eine Mobilitätsbefragung durchgeführt.<br><br><a href="www.herry.at">Mehr erfahren…</a>").bindTooltip('Mobilitätsbefragung an der FH Salzburg', tooltipOptions).addTo(map);
+
+      // var Beispiel = L.marker([X-Koordinate, Y-Koordinate], {icon: Name von Custom Icon}).bindTooltip('angezeigter Text, wenn man drauf klickt', tooltipOptions).addTo(map);
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
