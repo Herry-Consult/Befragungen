@@ -93,14 +93,10 @@ var ISTA = L.marker([48.311051, 16.257041], {icon: mHochschulen}).bindPopup('<b>
 /-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
 // nachdem Marker erzeugt und u.a. zu Layer-Groups hinzugefügt wurden, müssen jetzt noch die vollständig befüllten Layer-Groups zur Karte hinzugefügt werden:
 
-Hochschulen;
-Betriebe;
-Gemeinden;
-
 var overlayMaps = {
 	"Hochschulen": Hochschulen,
 	"Betriebe": Betriebe,
-	"Gemeinden": Gemeinden,
+	"Gemeinden": Gemeinden
 };
 
 var layerControl = L.control.layers({}, overlayMaps).addTo(map);
