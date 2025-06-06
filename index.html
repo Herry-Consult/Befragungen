@@ -99,7 +99,7 @@ var overlayMaps = {
 	"Gemeinden": Gemeinden,
 };
 
-var layerControl = L.control.layers(overlayMaps).addTo(map);
+var layerControl = L.control.layers({}, overlayMaps).addTo(map);
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
