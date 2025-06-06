@@ -12,39 +12,34 @@
     <script type="text/javascript">
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Creating the Map
+// Creating the Map (=Kartengrundlage)
     var map = L.map('map').setView([47.780, 13.354], 8);
 
-// Tile-Layer erstellen
+// Tile-Layer erstellen (=Kartendesign)
     var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-    maxZoom: 13,
-    minZoom: 6,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">Humanitarian OpenStreetMap</a>'
+    	maxZoom: 13,
+   	minZoom: 6,
+    	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">Humanitarian OpenStreetMap</a>'
     }).addTo(map);  
 
-// Layer-Groups erstellen (einzelne Marker können anschließend zu diesen Layer-Groups hinzugefügt werden)
+// Layer-Groups erstellen (=Gruppen, denen später Marker hinzugefügt werden können)
     var Hochschulen = L.layerGroup();
     var Gemeinden = L.layerGroup();
-      
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-/* Coordinate Finder
-    var marker = L.marker([0, 0], {
-     draggable: true,
-    }).addTo(map);
-    marker.bindPopup('LatLng Marker').openPopup();
-    marker.on('dragend', function(e) {
-      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
-    });
-*/
+    var Betriebe = L.layerGroup();
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Optionen fuer Tooltips (also das, was angezeigt wird, wenn man mit der Maus drueber faehrt)
+// Optionen für Tooltips (werden angezeigt, wenn man mit Cursor über Marker hovered)
     var tooltipOptions = {
         permanent: false, // Der Tooltip wird nicht staendig angezeigt, sondern nur bei Mouseover
         direction: 'right', // Die Richtung, in der der Tooltip angezeigt wird
-	offset:    L.point(30,15),
+	offset:    L.point(30, 15),
         className: 'custom-tooltip' // Benutzerdefinierte CSS-Klasse fuer Styling
-      };
+    };
+
+// Optionen für Pop-Ups (werden angezeigt, wenn man auf Marker klickt)
+    var popupOptions = {
+	offset: L.point(20, 0)
+    };
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Custom Marker (png-Dateien müssen im Githubordner "icons" abgelegt sein), die Größe muss entsprechend angepasst werden
