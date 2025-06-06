@@ -45,18 +45,21 @@
 // Custom Marker (png-Dateien müssen im Githubordner "icons" abgelegt sein), die Größe muss entsprechend angepasst werden
 
     var mHochschulen = L.icon({
-		  iconUrl:       'icons/marker-icon-green.png',
-		  shadowUrl:	 'scripts/images/marker-shadow.png',
+	iconUrl:       'icons/marker-icon-green.png',
+	shadowUrl:	 'scripts/images/marker-shadow.png',
+	iconAnchor: [12, 41]
 	  });
 
     var mBetriebe = L.icon({
-		  iconUrl:       'icons/marker-icon-blue.png',
-		  shadowUrl:	 'scripts/images/marker-shadow.png',
+	iconUrl:       'icons/marker-icon-blue.png',
+	shadowUrl:	 'scripts/images/marker-shadow.png',
+	iconAnchor: [12, 41]
 	  });
 
     var mGemeinden = L.icon({
-		  iconUrl:       'icons/marker-icon-orange.png',
-		  shadowUrl:	 'scripts/images/marker-shadow.png',
+	iconUrl:       'icons/marker-icon-orange.png',
+	shadowUrl:	 'scripts/images/marker-shadow.png',
+	iconAnchor: [12, 41]
 	  });
       
 /*
@@ -85,8 +88,8 @@ var Angewandte = L.marker([48.208170, 16.382112], {icon: mHochschulen}).bindPopu
 var Mozarteum = L.marker([47.803841, 13.043223], {icon: mHochschulen}).bindPopup('<b>Mobilitätsbefragung Mozarteum Salzburg</b><br>Angesichts der globalen Herausforderungen will die Universität eine Vorbildwirkung für eine auf Dauer zukunftsfähige und lebenswerte Gesellschaft wahrnehmen. Im Beratungsprozess wurden Möglichkeiten zur Forcierung einer klimafreundlichen Mobilität im Betrieb (Arbeits- und Dienstwege der Mitarbeiter:innen) und damit ein hergehende Emissions- und Kosteneinsparungen aufgezeigt. <br><br><a href="https://herry.at/neuigkeiten/item/543-mobilitaetsbefragung-mozarteum-salzburg">Mehr erfahren…</a>', popupOptions).bindTooltip('Mobilitätsbefragung Mozarteum Salzburg', tooltipOptions).addTo(Hochschulen);
 var Uni_Wien = L.marker([48.213114, 16.359217], {icon: mHochschulen}).bindPopup('<b>Mobilitätserhebung Universität Wien</b><br>Ziel der Erhebung war es, das Mobilitätsverhalten der Mitarbeiter:innen sowie der Studierenden und damit die im Mobilitätsbereich verursachten Emissionen im Jahr 2019 mittels Befragung zu erheben. Dazu wurden entsprechende Fragebögen entwickelt und für eine Online-Erhebung elektronisch in deutscher und englischer Sprache aufbereitet.<br><br><a href="https://herry.at/neuigkeiten/item/542-mobilitaetserhebung-universitaet-wien">Mehr erfahren…</a>', popupOptions).bindTooltip('Mobilitätserhebung Universität Wien', tooltipOptions).addTo(Hochschulen);
 var FH_OÖ_Wels = L.marker([48.161421, 14.027199], {icon: mHochschulen}).bindPopup('<b>Mobilitätserhebung FH Oberösterreich</b><br>Ziel des Projekts war, das aktuelle Verkehrsverhalten der Mitarbeiter:innen, externen Lehrenden und Studierenden zu analysieren und daraus Verlagerungspotenziale zu quantifizieren. Das Mobilitätsverhalten der Mitarbeiter:innen am Arbeitsweg und bei Dienstwegen sowie die Wünsche und Bedürfnisse der Mitarbeiter:innen wurden mittels einer Befragung erhoben.<br><br><a href="https://herry.at/neuigkeiten/item/541-mobilitaetserhebung-fh-oberoesterreich">Mehr erfahren…</a>', popupOptions).bindTooltip('Mobilitätserhebung FH Oberösterreich', tooltipOptions).addTo(Hochschulen);
-var Donau_Uni_Krems = L.marker([48.407844, 15.585831], {icon: mHochschulen}).bindPopup('<b>Mobilitätserhebung Donau-Universität Krems</b><br>Die Donau-Universität Krems ist seit Jänner 2017 Mitglied der Allianz Nachhaltiger Universitäten in Österreich. Die Allianz-Universitäten entwickeln universitätsspezifische Nachhaltigkeitskonzepte, welche die ökologische, ökonomische und soziale Verantwortung insbesondere auch in ihrer langfristigen Perspektive abbilden.<br><br><a href="https://herry.at/neuigkeiten/item/540-mobilitaetserhebung-donau-universitaet-krems">Mehr erfahren…</a>', popupOptions).bindTooltip('Mobilitätserhebung Donau-Universität Krems', tooltipOptions).addTo(Betriebe);
-var ISTA = L.marker([48.311051, 16.257041], {icon: mHochschulen}).bindPopup('<b>Mobility Survey ISTA</b><br>Das Institute of Science and Technology Austria (ISTA) ist bestrebt verursachte Emissionen aus dem eigenen Universitätsbetrieb, der Forschung und der Lehre zu minimieren und dementsprechende Maßnahmen zu setzen. Auf Wunsch wurde die online-Befragung rein in Englisch durchgeführt.<br><br><a href="https://herry.at/neuigkeiten/item/545-mobility-survey-intitute-of-science-and-technology-austria">Mehr erfahren…</a>', popupOptions).bindTooltip('Mobility Survey ISTA', tooltipOptions).addTo(Gemeinden);
+var Donau_Uni_Krems = L.marker([48.407844, 15.585831], {icon: mHochschulen}).bindPopup('<b>Mobilitätserhebung Donau-Universität Krems</b><br>Die Donau-Universität Krems ist seit Jänner 2017 Mitglied der Allianz Nachhaltiger Universitäten in Österreich. Die Allianz-Universitäten entwickeln universitätsspezifische Nachhaltigkeitskonzepte, welche die ökologische, ökonomische und soziale Verantwortung insbesondere auch in ihrer langfristigen Perspektive abbilden.<br><br><a href="https://herry.at/neuigkeiten/item/540-mobilitaetserhebung-donau-universitaet-krems">Mehr erfahren…</a>', popupOptions).bindTooltip('Mobilitätserhebung Donau-Universität Krems', tooltipOptions).addTo(Hochschulen);
+var ISTA = L.marker([48.311051, 16.257041], {icon: mHochschulen}).bindPopup('<b>Mobility Survey ISTA</b><br>Das Institute of Science and Technology Austria (ISTA) ist bestrebt verursachte Emissionen aus dem eigenen Universitätsbetrieb, der Forschung und der Lehre zu minimieren und dementsprechende Maßnahmen zu setzen. Auf Wunsch wurde die online-Befragung rein in Englisch durchgeführt.<br><br><a href="https://herry.at/neuigkeiten/item/545-mobility-survey-intitute-of-science-and-technology-austria">Mehr erfahren…</a>', popupOptions).bindTooltip('Mobility Survey ISTA', tooltipOptions).addTo(Hochschulen);
 
 // var Beispiel = L.marker([X-Koordinate, Y-Koordinate], {icon: Name von Custom Icon}).bindTooltip('angezeigter Text, wenn man drauf klickt', tooltipOptions).addTo(map);
 	    
