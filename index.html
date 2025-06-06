@@ -88,15 +88,19 @@ var FH_OÖ_Wels = L.marker([48.161421, 14.027199], {icon: mHochschulen}).bindPop
 var Donau_Uni_Krems = L.marker([48.407844, 15.585831], {icon: mHochschulen}).bindPopup('<b>Mobilitätserhebung Donau-Universität Krems</b><br>Die Donau-Universität Krems ist seit Jänner 2017 Mitglied der Allianz Nachhaltiger Universitäten in Österreich. Die Allianz-Universitäten entwickeln universitätsspezifische Nachhaltigkeitskonzepte, welche die ökologische, ökonomische und soziale Verantwortung insbesondere auch in ihrer langfristigen Perspektive abbilden.<br><br><a href="https://herry.at/neuigkeiten/item/540-mobilitaetserhebung-donau-universitaet-krems">Mehr erfahren…</a>', popupOptions).bindTooltip('Mobilitätserhebung Donau-Universität Krems', tooltipOptions).addTo(Hochschulen);
 var ISTA = L.marker([48.311051, 16.257041], {icon: mHochschulen}).bindPopup('<b>Mobility Survey ISTA</b><br>Das Institute of Science and Technology Austria (ISTA) ist bestrebt verursachte Emissionen aus dem eigenen Universitätsbetrieb, der Forschung und der Lehre zu minimieren und dementsprechende Maßnahmen zu setzen. Auf Wunsch wurde die online-Befragung rein in Englisch durchgeführt.<br><br><a href="https://herry.at/neuigkeiten/item/545-mobility-survey-intitute-of-science-and-technology-austria">Mehr erfahren…</a>', popupOptions).bindTooltip('Mobility Survey ISTA', tooltipOptions).addTo(Hochschulen);
 
-      
+// var Beispiel = L.marker([X-Koordinate, Y-Koordinate], {icon: Name von Custom Icon}).bindTooltip('angezeigter Text, wenn man drauf klickt', tooltipOptions).addTo(map);
+	    
+/-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
 // nachdem Marker erzeugt und u.a. zu Layer-Groups hinzugefügt wurden, müssen jetzt noch die vollständig befüllten Layer-Groups zur Karte hinzugefügt werden:
 
-Hochschulen.addTo(map);
-Gemeinden.addTo(map);
-Betriebe.addTo(map);
+var overlayMaps = {
+	"Hochschulen": Hochschulen,
+	"Betriebe": Betriebe,
+	"Gemeinden": Gemeinden,
+};
 
-      
-      // var Beispiel = L.marker([X-Koordinate, Y-Koordinate], {icon: Name von Custom Icon}).bindTooltip('angezeigter Text, wenn man drauf klickt', tooltipOptions).addTo(map);
+var layerControl = L.control.layers(overlayMaps).addTo(map);
+
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
