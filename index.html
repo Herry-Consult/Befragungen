@@ -42,6 +42,7 @@
     var tooltipOptions = {
         permanent: false, // Der Tooltip wird nicht staendig angezeigt, sondern nur bei Mouseover
         direction: 'right', // Die Richtung, in der der Tooltip angezeigt wird
+	offset:    L.point(10,10),
         className: 'custom-tooltip' // Benutzerdefinierte CSS-Klasse fuer Styling
       };
 
@@ -51,8 +52,6 @@
     var mHochschulen = L.icon({
 		  iconUrl:       'icons/marker-icon-green.png',
 		  shadowUrl:	 'scripts/images/marker-shadow.png',
-	    	  popupAnchor: [0, 1],
-		  tooltipAnchor: [1, 0],
 	  });
 
     var mBetriebe = L.icon({
