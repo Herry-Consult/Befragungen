@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="scripts/leaflet.css">
     <script src="scripts/leaflet.js"></script>
+    <script src="shapes/lander_linestrings_wgs84.js"></script>
   </head>
   
   <body style="height: 100%;margin: 0;">
@@ -22,6 +23,14 @@
     	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">Humanitarian OpenStreetMap</a>'
     }).addTo(map);  
 
+// Bundesländergrenzen aus geoJSON-Datei "lander_linestrings_wgs84.js" darstellen
+   var bundeslaender = L.geoJSON(myLines, {
+	   style: {
+		   color: 'black',
+		   weight: 2
+	   }
+   }).addTo(map);
+	    
 // Layer-Groups erstellen (=Gruppen, denen später Marker hinzugefügt werden können)
     var Hochschulen = L.layerGroup();
     var Verwaltung = L.layerGroup();
