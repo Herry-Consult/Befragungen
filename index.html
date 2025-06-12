@@ -152,10 +152,17 @@ var Betriebsstätten = L.marker([48.3040021, 14.2850472], {icon: mVerwaltung}).b
 var Güterverkehrsprognose = L.marker([48.2025031, 15.6344519], {icon: mVerwaltung}).bindPopup('<b>Güterverkehr in NÖ (2004)</b><br><br>Für die Niederösterreichische Landesregierung wurde im Rahmen der Fortschreibung des Landesverkehrskonzepts eine umfassende Güterverkehrsprognose erstellt, die bestehende und zukünftige Entwicklungen systematisch analysierte. Mithilfe breit angelegter Unternehmensbefragungen und fundierter Methodenkombinationen wurde eine disaggregierte Datengrundlage geschaffen, die als Basis für die strategische Weiterentwicklung des Güterverkehrs in Niederösterreich dient.<br><br><a href="https://herry.at/neuigkeiten/item/477-fortschreibung-der-gueterverkehrsprognose">Mehr erfahren…</a>', popupOptions).bindTooltip('Güterverkehr in NÖ (2004)', tooltipOptions).addTo(Verwaltung);
 
 	    
+// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Coordinate Finder --> wenn benötigt, einfach die // vor den einzelnen Zeilen entfernen!
+    var marker = L.marker([47.354646765022494, 13.575506684988431], {
+     draggable: true,
+    }).addTo(map);
+    marker.bindPopup('LatLng Marker').openPopup();
+    marker.on('dragend', function(e) {
+      marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
+    });	    
 	    
-	    
-	    
-// var Beispiel = L.marker([X-Koordinate, Y-Koordinate], {icon: Name von Custom Icon}).bindTooltip('angezeigter Text, wenn man drauf klickt', tooltipOptions).addTo(map);
+
 	    
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
 // nachdem Marker erzeugt und u.a. zu Layer-Groups hinzugefügt wurden, müssen jetzt noch die vollständig befüllten Layer-Groups zur Karte hinzugefügt werden:
