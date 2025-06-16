@@ -35,6 +35,7 @@
     var Hochschulen = L.layerGroup();
     var Verwaltung = L.layerGroup();
     var Betriebe = L.layerGroup();
+    var Kunden = L.layerGroup();
 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Optionen für Tooltips (werden angezeigt, wenn man mit Cursor über Marker hovered)
@@ -70,7 +71,14 @@
 	shadowUrl:	 'scripts/images/marker-shadow.png',
 	iconAnchor: [12, 41]
 	  });
-// jetzt kommen die runden marker:
+
+    var mKunden = L.icon({
+	iconUrl:       'icons/marker-icon-violet.png',
+	shadowUrl:	 'scripts/images/marker-shadow.png',
+	iconAnchor: [12, 41]
+	  });
+	    
+// jetzt kommen die runden marker für wiederkehrende Befragungen (z.B. Vorarlberg oder NÖ):
 	    
     var mrHochschulen = L.icon({
 	iconUrl:       'icons/marker-icon-green-round.png',
@@ -95,7 +103,16 @@
 	iconSize: [35, 35],
 	shadowAnchor: [17, 40]
 	  });
-	    
+
+    var mrKunden = L.icon({
+	iconUrl:       'icons/marker-icon-violet-round.png',
+	shadowUrl:	 'icons/marker-round-shadow4.png',
+	iconAnchor: [17, 35],
+	iconSize: [35, 35],
+	shadowAnchor: [17, 40]
+	  });
+
+    
 /*
     var NameVonCustomIcon = L.icon({
 		  iconUrl:       'icons/BILDDATEINAME.png',
@@ -210,7 +227,7 @@ var Mauthausen13 = L.marker([48.1580754, 14.5013103], {icon: mBetriebe}).bindPop
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Coordinate Finder --> wenn benötigt, einfach darüber und darunter bei /* und */ jeweils die Sterne durch Schrägstriche ersetzen! Nach verwendung bitte unbedingt wieder rückgängig machen!
 
-//
+/*
 
     var marker = L.marker([47.354646765022494, 13.575506684988431], {
      draggable: true,
@@ -220,7 +237,7 @@ var Mauthausen13 = L.marker([48.1580754, 14.5013103], {icon: mBetriebe}).bindPop
       marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);
     });	  
     
-// 
+*/ 
      
 	    
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
@@ -229,11 +246,13 @@ var Mauthausen13 = L.marker([48.1580754, 14.5013103], {icon: mBetriebe}).bindPop
 Hochschulen.addTo(map);
 Betriebe.addTo(map);
 Verwaltung.addTo(map);
+Kunden.addTo(map);
 	    
 var overlayMaps = {
 	"Hochschulen": Hochschulen,
 	"Betriebe": Betriebe,
-	"Verwaltung": Verwaltung
+	"Verwaltung": Verwaltung,
+	"Kund:innen": Kunden
 };
 
 var layerControl = L.control.layers({}, overlayMaps).addTo(map);
