@@ -77,7 +77,8 @@
 	shadowUrl:	 'scripts/images/marker-shadow.png',
 	iconAnchor: [12, 41]
 	  });
-	    
+
+// --------------------------------------------------------------------------------------------
 // jetzt kommen die runden marker für wiederkehrende Befragungen (z.B. Vorarlberg oder NÖ):
 	    
     var mrHochschulen = L.icon({
@@ -112,19 +113,18 @@
 	shadowAnchor: [17, 40]
 	  });
 
-    
-/*
-    var NameVonCustomIcon = L.icon({
-		  iconUrl:       'icons/BILDDATEINAME.png',
-		  iconRetinaUrl: 'icons/BILDDATEINAME.png',
-		  iconSize:    [15, 15],
-		  iconAnchor:  [8, 8],
-		  popupAnchor: [0, -5],
-		  tooltipAnchor: [5, 0],
-	  });
- */
+// --------------------------------------------------------------------------------------------
+// Marker für Legende definieren:
 
-      // --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+var legendIcons = {
+    "Hochschulen": "icons/marker-icon-green.png",
+    "Betriebe": "icons/marker-icon-blue.png",
+    "Verwaltung": "icons/marker-icon-orange.png",
+    "Kund:innen": "icons/marker-icon-violet.png"
+};
+	    
+
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Marker: den Code erstelle ich direkt in meinem Google Sheet --> zum aendern einfach die gesamte Code-Spalte kopieren und statt folgendem Inhalt einfuegen:
 
 
@@ -295,7 +295,11 @@ function updateLegendContent(container) {
     if (activeLayers.length > 0) {
         container.innerHTML += '<b>Aktive Kategorien:</b><br>';
         activeLayers.forEach(function(name) {
-            container.innerHTML += '• ' + name + '<br>';
+            container.innerHTML += `
+    		<div style="display: flex; align-items: center; margin-bottom: 4px;">
+        	<img src="${legendIcons[name]}" style="width: 18px; height: 30px; margin-right: 8px;">
+        	${name}
+    </div>`;
         });
 
         if (activeLayers.length < 4) {
