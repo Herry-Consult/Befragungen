@@ -293,7 +293,7 @@ function updateLegendContent(container) {
     container.innerHTML = '';
 
     if (activeLayers.length > 0) {
-        container.innerHTML += '<b>Aktive Kategorien:</b><br>';
+        container.innerHTML += '<b>Unsere Projekte:</b><br>';
         activeLayers.forEach(function(name) {
             container.innerHTML += `
     		<div style="display: flex; align-items: center; margin-bottom: 4px;">
@@ -306,7 +306,7 @@ function updateLegendContent(container) {
             container.innerHTML += '<br><a href="#" id="showAllCategories">Alle Kategorien einblenden</a>';
         }
     } else {
-        container.innerHTML = 'Keine Kategorien aktiv.<br><a href="#" id="showAllCategories">Alle Kategorien einblenden</a>';
+        container.innerHTML = 'Keine Kategorie ausgewählt.<br><a href="#" id="showAllCategories">Alle einblenden</a>';
     }
 
     // Klick-Handler nachträglich binden
