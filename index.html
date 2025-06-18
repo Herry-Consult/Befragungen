@@ -257,41 +257,76 @@ var overlayMaps = {
 
 var layerControl = L.control.layers({}, overlayMaps).addTo(map);
 
-
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-/* Copyright für farbige Marker-Icons
-
-	BSD 2-Clause License
-	
-	Copyright (c) 2010-2019, Vladimir Agafonkin
-	Copyright (c) 2010-2011, CloudMade
-	Copyright (c) 2013-2020, Thomas Pointhuber
-	All rights reserved.
-	
-	Redistribution and use in source and binary forms, with or without
-	modification, are permitted provided that the following conditions are met:
-	
-	1. Redistributions of source code must retain the above copyright notice, this
-	   list of conditions and the following disclaimer.
-	
-	2. Redistributions in binary form must reproduce the above copyright notice,
-	   this list of conditions and the following disclaimer in the documentation
-	   and/or other materials provided with the distribution.
-	
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-	IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-	DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-	FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-	DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-	SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-	OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
 	    
+// ------------------------------------------------------  
+// jetzt wird eine Legende als Leaflet-Control eingefügt:
 
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function(map) {
+    var div = L.DomUtil.create('div', 'info legend');
+    div.style.backgroundColor = 'white';
+    div.style.padding = '10px';
+    div.style.borderRadius = '8px';
+    div.style.boxShadow = '0 0 5px rgba(0,0,0,0.4)';
+    div.style.fontSize = '14px';
+    div.style.lineHeight = '1.4';
+
+    updateLegendContent(div);
+    return div;
+};
+
+legend.addTo(map);
+
+	    
+// ------------------------------------------------------  
+// Funktion zum Aktualisieren der Legende (je nachdem, welche layerGroups gerade sichtbar sind):
+
+function updateLegendContent(container) {
+    var activeLayers = [];
+
+    if (map.hasLayer(Hochschulen)) activeLayers.push('Hochschulen');
+    if (map.hasLayer(Betriebe))    activeLayers.push('Betriebe');
+    if (map.hasLayer(Verwaltung))  activeLayers.push('Verwaltung');
+    if (map.hasLayer(Kunden))      activeLayers.push('Kund:innen');
+
+    container.innerHTML = '';
+
+    if (activeLayers.length > 0) {
+        container.innerHTML += '<b>Aktive Kategorien:</b><br>';
+        activeLayers.forEach(function(name) {
+            container.innerHTML += '• ' + name + '<br>';
+        });
+
+        if (activeLayers.length < 4) {
+            container.innerHTML += '<br><a href="#" id="showAllCategories">Alle Kategorien einblenden</a>';
+        }
+    } else {
+        container.innerHTML = 'Keine Kategorien aktiv.<br><a href="#" id="showAllCategories">Alle Kategorien einblenden</a>';
+    }
+
+    // Klick-Handler nachträglich binden
+    var link = container.querySelector('#showAllCategories');
+    if (link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            map.addLayer(Hochschulen);
+            map.addLayer(Betriebe);
+            map.addLayer(Verwaltung);
+            map.addLayer(Kunden);
+        });
+    }
+}
+
+// ------------------------------------------------------  
+// Listener für Sichtbarkeitsänderungen bei layerGroups einfügen:
+
+map.on('overlayadd overlayremove', function () {
+    updateLegendContent(document.querySelector('.legend'));
+});
+	    
+	    
+	
     </script>
   </body>
 </html>
