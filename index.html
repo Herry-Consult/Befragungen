@@ -285,15 +285,15 @@ legend.addTo(map);
 function updateLegendContent(container) {
     var activeLayers = [];
 
-    if (map.hasLayer(Hochschulen)) activeLayers.push('Hochschulen');
-    if (map.hasLayer(Betriebe))    activeLayers.push('Betriebe');
-    if (map.hasLayer(Verwaltung))  activeLayers.push('Verwaltung');
-    if (map.hasLayer(Kunden))      activeLayers.push('Kund:innen');
+    if (map.hasLayer(Hochschulen)) activeLayers.push('an Hochschulen');
+    if (map.hasLayer(Betriebe))    activeLayers.push('in Betrieben');
+    if (map.hasLayer(Verwaltung))  activeLayers.push('für die Verwaltung');
+    if (map.hasLayer(Kunden))      activeLayers.push('Kund:innen-Befragungen');
 
     container.innerHTML = '';
 
     if (activeLayers.length > 0) {
-        container.innerHTML += '<b>Unsere Projekte:</b><br>';
+        container.innerHTML += '<b>Unsere Befragungen:</b><br>';
         activeLayers.forEach(function(name) {
             container.innerHTML += `
     		<div style="display: flex; align-items: center; margin-bottom: 4px;">
