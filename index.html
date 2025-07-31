@@ -59,7 +59,7 @@
 // Custom Marker (png-Dateien müssen im Githubordner "icons" abgelegt sein), die Größe muss entsprechend angepasst werden
 
     var mHochschulen = L.icon({
-	iconUrl:       'icons/marker-icon-violet.png',
+	iconUrl:       'icons/marker-icon-green.png',
 	shadowUrl:	 'scripts/images/marker-shadow.png',
 	iconAnchor: [12, 41]
 	  });
@@ -77,7 +77,7 @@
 	  });
 
     var mKunden = L.icon({
-	iconUrl:       'icons/marker-icon-green.png',
+	iconUrl:       'icons/marker-icon-violet.png',
 	shadowUrl:	 'scripts/images/marker-shadow.png',
 	iconAnchor: [12, 41]
 	  });
@@ -92,7 +92,7 @@
 // jetzt kommen die runden marker für wiederkehrende Befragungen (z.B. Vorarlberg oder NÖ):
 	    
     var mrHochschulen = L.icon({
-	iconUrl:       'icons/marker-icon-violet-round.png',
+	iconUrl:       'icons/marker-icon-green-round.png',
 	shadowUrl:	 'icons/marker-round-shadow4.png',
 	iconAnchor: [17, 35],
 	iconSize: [35, 35],
@@ -116,7 +116,7 @@
 	  });
 
     var mrKunden = L.icon({
-	iconUrl:       'icons/marker-icon-green-round.png',
+	iconUrl:       'icons/marker-icon-violet-round.png',
 	shadowUrl:	 'icons/marker-round-shadow4.png',
 	iconAnchor: [17, 35],
 	iconSize: [35, 35],
@@ -139,7 +139,7 @@ var legendIcons = {
     "in Betrieben": "icons/marker-icon-blue.png",
     "in Haushalten": "icons/marker-icon-orange.png",
     "Kund:innen-Befragungen": "icons/marker-icon-violet.png",
-    "im Güterverkehr": "icons/marker-icon-red.png"
+    "im Güterverkehr": "icons/marker-icon-yellow.png"
 };
 	    
 
@@ -327,7 +327,7 @@ function updateLegendContent(container) {
     </div>`;
         });
 
-        if (activeLayers.length < 4) {
+        if (activeLayers.length < 5) {
             container.innerHTML += '<br><a href="#" id="showAllCategories">Alle einblenden</a>';
         }
     } else {
