@@ -17,6 +17,14 @@
 // Creating the Map (=Kartengrundlage) 
     var map = L.map('map').setView([47.780, 13.354], 8);
 
+// Funktion zum Auslesen von URL-Parametern (damit in verschiedenen iFrames mithilfe der URL unterschiedliche LayerGroups ein- bzw. ausgeblendetw erden können)
+function getQueryParam(param) {
+	var urlParams = new URLSearchParams(window.location.search);
+	return urlParams.get(param);
+}
+
+var visibleLayer = getQueryParam("layer");
+	    
 // Tile-Layer erstellen (=Kartendesign)
     var osmHOT = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
     	maxZoom: 13,
@@ -264,11 +272,28 @@ var Mauthausen13 = L.marker([48.1580754, 14.5013103], {icon: mBetriebe}).bindPop
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
 // nachdem Marker erzeugt und u.a. zu Layer-Groups hinzugefügt wurden, müssen jetzt noch die vollständig befüllten Layer-Groups zur Karte hinzugefügt werden:
 
-Hochschulen.addTo(map);
-Betriebe.addTo(map);
-Haushalte.addTo(map);
-Kunden.addTo(map);
-Güterverkehr.addTo(map);
+// damit man mit der URL steuern kann, welche layerGroups zu Beginn angezeigt werden, braucht es diese if und else if Konstruktion:
+
+if (!visibleLayer || visibleLayer === "alle") {
+	Hochschulen.addTo(map);
+	Betriebe.addTo(map);
+	Haushalte.addTo(map);
+	Kunden.addTo(map);
+	Güterverkehr.addTo(map);
+} else if (visibleLayer === "hochschulen") {
+	Hochschulen.addTo(map);
+} else if (visibleLayer === "betriebe") {
+	Betriebe.addTo(map);
+} else if (visibleLayer === "haushalte") {
+	Haushalte.addTo(map);
+} else if (visibleLayer === "kunden") {
+	Kunden.addTo(map);
+} else if (visibleLayer === "gueterverkehr") {
+	Güterverkehr.addTo(map);
+}
+
+
+// overlayMaps gruppiert einfach die ganzen Layer, um sie in der layer-control zu integrieren:
 	    
 var overlayMaps = {
 	"Hochschulen": Hochschulen,
