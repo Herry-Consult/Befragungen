@@ -274,25 +274,23 @@ var Mauthausen13 = L.marker([48.1580754, 14.5013103], {icon: mBetriebe}).bindPop
 
 // damit man mit der URL steuern kann, welche layerGroups zu Beginn angezeigt werden, braucht es diese if und else if Konstruktion:
 
-if (!visibleLayer || visibleLayer === "alle") {
-	Hochschulen.addTo(map);
-	Betriebe.addTo(map);
-	Haushalte.addTo(map);
-	Kunden.addTo(map);
-	Güterverkehr.addTo(map);
-} else if (visibleLayer === "hochschulen") {
-	Hochschulen.addTo(map);
-} else if (visibleLayer === "betriebe") {
-	Betriebe.addTo(map);
-} else if (visibleLayer === "haushalte") {
-	Haushalte.addTo(map);
-} else if (visibleLayer === "kunden") {
-	Kunden.addTo(map);
-} else if (visibleLayer === "gueterverkehr") {
-	Güterverkehr.addTo(map);
+var visibleLayersParam = getQueryParam("layer");
+var visibleLayers = visibleLayersParak ? visibleLayersParam.toLowerCase().split(",") : null;
+
+function showIfRequested(layerName, layerGroup) {
+	if (!visibleLayers || visibleLayers.includes(layerName)) {
+		layerGroup.addTo(map);
+	}
 }
+	    
+showIfRequested("hochschulen", Hochschulen);
+showIfRequested("betriebe", Betriebe);
+showIfRequested("haushalte", Haushalte);
+showIfRequested("kunden", Kunden);
+showIfRequested("gueterverkehr", Güterverkehr);
 
 
+	    
 // overlayMaps gruppiert einfach die ganzen Layer, um sie in der layer-control zu integrieren:
 	    
 var overlayMaps = {
