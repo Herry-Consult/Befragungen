@@ -274,15 +274,18 @@ var Mauthausen13 = L.marker([48.1580754, 14.5013103], {icon: mBetriebe}).bindPop
 
 // damit man mit der URL steuern kann, welche layerGroups zu Beginn angezeigt werden, braucht es diese if und else if Konstruktion:
 
+// Mehrere Layer via URL anzeigen
 var visibleLayersParam = getQueryParam("layer");
-var visibleLayers = visibleLayersParak ? visibleLayersParam.toLowerCase().split(",") : null;
+var visibleLayers = visibleLayersParam ? visibleLayersParam.toLowerCase().split(",") : null;
 
+// Helper-Funktion zum Hinzufügen, wenn gewünscht
 function showIfRequested(layerName, layerGroup) {
-	if (!visibleLayers || visibleLayers.includes(layerName)) {
-		layerGroup.addTo(map);
-	}
+  if (!visibleLayers || visibleLayers.includes(layerName)) {
+    layerGroup.addTo(map);
+  }
 }
-	    
+
+// Aufrufen für alle LayerGroups
 showIfRequested("hochschulen", Hochschulen);
 showIfRequested("betriebe", Betriebe);
 showIfRequested("haushalte", Haushalte);
